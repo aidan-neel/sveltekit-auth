@@ -2,10 +2,10 @@
     import '$lib/styles/app.css'; // tailwind styles
     import '../app.pcss'; // custom styles
     
+    import { browser } from '$app/environment';
     import Loading from '$lib/components/ui/loading/loading.svelte';
     import Toast from '$lib/components/ui/toast/toast.svelte';
     import { loading } from '$lib/extra';
-    import { browser } from '$app/environment';
 
     export let data; // props
     const user = data.props.userData.data; // this is how you get the user data, wacky af

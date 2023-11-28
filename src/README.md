@@ -1,7 +1,7 @@
 # SvelteKit Authentication Template
 Built with [Prisma](https://github.com/prisma/prisma), [PrismaAuth.js](https://github.com/aidan-neel/PrismaAuth.js), [SvelteKit](https://github.com/sveltejs/kit), [shadcn-svelte](https://github.com/huntabyte/shadcn-svelte), and more.
 
-## Configuration
+## Installation
 **1.** Set the random JWT token key in the .env file in the root directory like so:
 ```javascript
 DATABASE_URL="file:./dev.db"

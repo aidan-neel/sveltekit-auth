@@ -3,7 +3,7 @@ import { toast } from "../toast";
 import { prismaAuth } from "./prisma";
 
 /**
- * Global login function, serversided, and allows for logging in from any file.
+ * Global login function. Intended for server side, and allows for logging in from any serversided file.
  * Requires an email and password.
  * @param {string} email
  * @param {string} password
@@ -63,3 +63,49 @@ export async function login(email: any, password: any) {
         };
     }
 }
+
+//
+
+interface SignOutResponse {
+    status: string;
+    message: string;
+}
+
+/**
+ * Global sign out function. Intended for server side, and allows for signing out from any serversided file.
+ * Requires a session cookie.
+ * @param {string} session
+ * @returns {Promise<{status: string, message: string}>}
+ */
+export async function signOut(session: string): Promise<SignOutResponse> {
+    session = session.replace('session=', '').split(';')[0];
+    try {
+        const userSignedOut = await prismaAuth.signUserOut(session);
+        console.log(session);
+        console.log(userSignedOut)
+        if(userSignedOut) {
+            const response: SignOutResponse = {
+                status: 'success',
+                message: 'Successfully signed out.'
+            }
+
+            return response;
+        } else {
+            const response: SignOutResponse = {
+                status: 'error',
+                message: 'Failed to sign out.'
+            }
+
+            return response;
+        }
+    } catch (err) {
+        console.log(err);
+    }
+    
+    const defaultResponse: SignOutResponse = {
+        status: 'error',
+        message: 'Failed to sign out.'
+    }
+
+    return defaultResponse;
+}                           

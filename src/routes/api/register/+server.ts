@@ -55,8 +55,8 @@ export async function POST({ request }) {
         const session = await prismaAuth.createSession(user.user.id, user.token);
         const sessionCookie = await prismaAuth.createSessionCookie(session);
         if(sessionCookie) {
-            console.log(sessionCookie)
             return new Response(JSON.stringify({
+                status: 200,
                 user,
                 session,
                 sessionCookie,
@@ -70,9 +70,8 @@ export async function POST({ request }) {
 
         toast('Successfully registered.');
     } catch(err) {
-        console.log(err);
-
         return new Response(JSON.stringify({
+            status: 500,
             error: err.message,
         }), {
             headers: {

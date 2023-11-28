@@ -15,13 +15,23 @@ export async function GET({ request }) {
     
     if(session !== '') {
         const data = await prismaAuth.getSessionData(session);
-        return new Response(JSON.stringify({
-            data: data,
-        }), {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        if(data === null) {
+            return new Response(JSON.stringify({
+                data: 'Not logged in.'
+            }), {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+        } else {
+            return new Response(JSON.stringify({
+                data: data,
+            }), {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+        }
     } else {
         return new Response(JSON.stringify({
             data: 'Not logged in.'

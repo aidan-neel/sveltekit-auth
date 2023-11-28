@@ -75,11 +75,11 @@
   </style>
 
 <!-- Button on log in and registration to act as an anchor between eachother -->
-<Button on:click={() => { goto('/register') }} variant="outline" class="absolute bottom-6" href="/">Register</Button>
+<Button variant="outline" class="absolute bottom-6" href="/register">Register</Button>
 
 
 <!-- Main log in form -->
-<article class="pb-48 items-center flex flex-col w-4/5 justify-center">
+<article class="pb-48 fadeUp items-center flex flex-col w-4/5 justify-center">
     <Form.Root
         on:submit={handleSubmit}
         schema={formSchema}
