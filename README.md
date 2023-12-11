@@ -15,6 +15,3 @@ export let url = isDev ? 'http://localhost:5173' : 'https://url.com'; // Change 
 
 ## Notes
 **1.** The database is interchangeable. You can use SQLite3, MySQL, PostgreSQL with Vercel, etc. As long as Prisma supports it, the template supports it.
-
-## Intended Features For v2
-**1.** Migration to new **KodaDB.js** system (when it's fully ready).
